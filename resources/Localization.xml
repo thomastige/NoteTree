@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Strings>
+	<String id="PROGRAM_NAME">
+		<EN>NoteTree</EN>
+		<FR>NoteTree</FR>
+	</String>
 	<String id="MENU_FILE">
 		<EN>File</EN>
 		<FR>Fichier</FR>
@@ -19,5 +23,37 @@
 	<String id="MENU_LOAD">
 		<EN>Load</EN>
 		<FR>Charger</FR>
+	</String>
+	<String id="CLOSE_PROJECT">
+		<EN>Close Project</EN>
+		<FR>Fermer le projet</FR>
+	</String>
+	<String id="SUBMENU_PROCESS">
+		<EN>Process</EN>
+		<FR>Processus</FR>
+	</String>
+	<String id="PROCESS_GENERATE">
+		<EN>Generate</EN>
+		<FR>Générer</FR>
+	</String>
+	<String id="PROCESS_EDIT">
+		<EN>Edit</EN>
+		<FR>Édition</FR>
+	</String>
+	<String id="NODE_MENU">
+		<EN>Node</EN>
+		<FR>Noeuds</FR>
+	</String>
+	<String id="ADD_TEXT_NODE">
+		<EN>Add Text Node</EN>
+		<FR>Ajouter un noeud textuel</FR>
+	</String>
+	<String id="ADD_FOLDER_NODE">
+		<EN>Add Folder Node</EN>
+		<FR>Ajouter un dossier</FR>
+	</String>
+	<String id="EDIT_NODE">
+		<EN>Rename Node</EN>
+		<FR>Renommer Noeud</FR>
 	</String>
 </Strings>

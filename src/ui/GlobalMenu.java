@@ -128,7 +128,7 @@ public class GlobalMenu extends JMenuBar {
 	}
 
 	private JMenuItem getCloseButton() {
-		JMenuItem closeMenuItem = new JMenuItem("CLOSE_PROJECT");
+		JMenuItem closeMenuItem = new JMenuItem(LocalizationHelper.getLocalizedString("CLOSE_PROJECT"));
 		closeMenuItem.addActionListener(new ActionListener() {
 
 			@Override
@@ -319,7 +319,7 @@ public class GlobalMenu extends JMenuBar {
 	}
 
 	private JMenuItem addNewTextNodeButton(){
-		JMenuItem addNewTextNodeMenuItem = new JMenuItem("ADD_TEXT_NODE");
+		JMenuItem addNewTextNodeMenuItem = new JMenuItem(LocalizationHelper.getLocalizedString("ADD_TEXT_NODE"));
 
 		addNewTextNodeMenuItem.addActionListener(new ActionListener() {
 			
@@ -344,7 +344,7 @@ public class GlobalMenu extends JMenuBar {
 	}
 	
 	private JMenuItem addNewFolderNodeButton(){
-		JMenuItem addNewFolderNodeMenuItem = new JMenuItem("ADD_FOLDER_NODE");
+		JMenuItem addNewFolderNodeMenuItem = new JMenuItem(LocalizationHelper.getLocalizedString("ADD_FOLDER_NODE"));
 		
 		addNewFolderNodeMenuItem.addActionListener(new ActionListener() {
 			

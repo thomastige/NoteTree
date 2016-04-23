@@ -1,25 +1,20 @@
 package driver;
 
-import helpers.FileHelper;
 import helpers.LocalizationHelper;
 import helpers.property.FormatterTagsPropertiesHelper;
 import helpers.property.GlobalPropertiesHelper;
 import helpers.property.HotkeyPropertiesHelper;
-
-import java.io.File;
-
+import ui.Frame;
 import cache.SessionCacheManager;
 import cache.StructureCacheManager;
-import ui.Frame;
 
 public class Driver {
 
-	public static final String TEST_NAME = "Test Title";
 	private static Frame frame;
 
 	public static void main(String[] args) throws Exception {
 		initialStartup();
-		frame = new Frame(TEST_NAME);
+		frame = new Frame(LocalizationHelper.getLocalizedString("PROGRAM_NAME"));
 	}
 
 	public static Frame getFrame() {
