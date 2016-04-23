@@ -25,9 +25,8 @@ public class Driver {
 		GlobalPropertiesHelper.readAllProperties();
 		FormatterTagsPropertiesHelper.readAllProperties();
 		HotkeyPropertiesHelper.readAllProperties();
-
 		LocalizationHelper.readAllNodesToCache();
-
+		SessionCacheManager.restoreSessionCache();
 		// SessionCacheManager.setProjectName("TEST");
 		// SessionCacheManager.setSaveFileLocation(FileHelper.getCurrentFileRootLocation()
 		// + File.separator +
