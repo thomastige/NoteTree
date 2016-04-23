@@ -3,7 +3,6 @@ package ui;
 import helpers.FileHelper;
 import helpers.LocalizationHelper;
 import helpers.NavigationHelper;
-import helpers.NodeCounter;
 import helpers.ZipHelper;
 import helpers.property.GlobalPropertiesHelper;
 import interpreter.Generator;

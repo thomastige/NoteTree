@@ -13,7 +13,6 @@ public class TextFileCacheManager {
 
 	public static String getValue(String key) {
 		String value = textFileCache.get(key);
-		textFileCache.remove(key);
 		return value;
 	}
 
