@@ -1,0 +1,4 @@
+--Closing tag delimiter
+closingTagDelimiter=/
+--Formatting tags. Insert the contents of an XML tag. For example: <b> -> b. 
+bold=b

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Strings>
+	<String id="MENU_FILE">
+		<EN>File</EN>
+		<FR>Fichier</FR>
+	</String>
+	<String id="MENU_NEW">
+		<EN>New</EN>
+		<FR>Nouveau</FR>
+	</String>
+	<String id="MENU_SAVE">
+		<EN>Save</EN>
+		<FR>Enregistrer</FR>
+	</String>
+	<String id="MENU_SAVE_AS">
+		<EN>Save as</EN>
+		<FR>Enregistrer sous</FR>
+	</String>
+	<String id="MENU_LOAD">
+		<EN>Load</EN>
+		<FR>Charger</FR>
+	</String>
+</Strings>

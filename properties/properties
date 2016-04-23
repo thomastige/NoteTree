@@ -1,0 +1,16 @@
+--Localization
+language=EN
+
+--File size
+defaultX=1366
+defaultY=768
+defaultDividerLocation=300
+
+--Behavior
+generateOnFileLoad=true
+
+--Look and feel
+selectedNodeColor=211211211
+
+--Folder locations
+workingCopyCacheLocation=E:\\Programming\\Eclipse Workspace\\NoteTree\\cache
