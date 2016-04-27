@@ -155,7 +155,7 @@ public class FileHelper {
 			Random random = new Random();
 			folder = new File(SessionCacheManager.getCacheFolderLocation() + File.separator + (number * random.nextInt()));
 		}
-		boolean success = folder.mkdir();
+		boolean success = folder.mkdirs();
 		if (success) {
 			String structureContents = XMLHelper.createStructure();
 			String structurePath = folder.getPath() + File.separator + STRUCTURE_NAME;
