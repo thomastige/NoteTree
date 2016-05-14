@@ -1,5 +1,6 @@
 package ui;
 
+import handler.CustomTreeTransferHandler;
 import hotkeys.TreePanelActionMap;
 import hotkeys.TreePanelInputMap;
 
@@ -12,11 +13,14 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.swing.DropMode;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
+import javax.swing.TransferHandler;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeSelectionModel;
+import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -41,21 +45,22 @@ public class TreePanel extends JScrollPane {
 	public TreePanel(String directory, boolean vertical) throws ParserConfigurationException, SAXException, IOException {
 		super();
 		JTree tree = buildTree(new File(directory));
-		TreeSelectionModel selectionModel = new DefaultTreeSelectionModel();
-		selectionModel.setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
-		tree.setSelectionModel(selectionModel);
+		
 		this.add(tree);
 		tree.setFocusable(true);
 		setViewportView(tree);
-
+		
 		tree.setInputMap(JComponent.WHEN_FOCUSED, new TreePanelInputMap());
 		tree.setActionMap(new TreePanelActionMap());
 	}
 
+	
+	
 	// TODO: clean that shit up
 	private JTree buildTree(File file) throws ParserConfigurationException, SAXException, IOException {
 
-//		List<CustomTreeNode> nodes = XMLHelper.readStructureXML(file.getPath());
+		// List<CustomTreeNode> nodes =
+		// XMLHelper.readStructureXML(file.getPath());
 		List<CustomTreeNode> nodes = StructureCacheManager.getNodesAsList();
 
 		Collections.sort(nodes, new NodeComparator());
@@ -63,11 +68,18 @@ public class TreePanel extends JScrollPane {
 		JTree tree = new JTree(addNodes(null, nodes, root));
 		tree.setCellRenderer(new CustomTreeCellRenderer());
 		tree.addTreeSelectionListener(new NodeSelectionListener());
+		
+		tree.setDragEnabled(true);
+		tree.setTransferHandler(new CustomTreeTransferHandler());
+		
+		TreeSelectionModel selectionModel = new DefaultTreeSelectionModel();
+		selectionModel.setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+		tree.setSelectionModel(selectionModel);
 		return tree;
 	}
 
-	private DefaultMutableTreeNode addNodes(CustomTreeNode curTop, List<CustomTreeNode> nodes, CustomTreeNode currentNode)
-			throws ParserConfigurationException, InvalidObjectException {
+	private DefaultMutableTreeNode addNodes(CustomTreeNode curTop, List<CustomTreeNode> nodes, CustomTreeNode currentNode) throws ParserConfigurationException,
+			InvalidObjectException {
 		if (curTop != null) {
 			curTop.add(currentNode);
 		}
@@ -110,7 +122,11 @@ public class TreePanel extends JScrollPane {
 	public CustomTreeNode getSelectedNode() {
 		String path = "";
 		JTree jtree = getTree();
-		CustomTreeNode node = (CustomTreeNode ) jtree.getSelectionPath().getLastPathComponent();
+		TreePath treePath = jtree.getSelectionPath();
+		CustomTreeNode node = null;
+		if (treePath != null) {
+			node = (CustomTreeNode) treePath.getLastPathComponent();
+		}
 		return node;
 
 	}

@@ -1,5 +1,7 @@
 package driver;
 
+import javax.swing.UIManager;
+
 import helpers.LocalizationHelper;
 import helpers.property.FormatterTagsPropertiesHelper;
 import helpers.property.GlobalPropertiesHelper;
@@ -13,6 +15,7 @@ public class Driver {
 	private static Frame frame;
 
 	public static void main(String[] args) throws Exception {
+		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		initialStartup();
 		frame = new Frame(LocalizationHelper.getLocalizedString("PROGRAM_NAME"));
 	}

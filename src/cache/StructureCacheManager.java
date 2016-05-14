@@ -23,6 +23,10 @@ public class StructureCacheManager {
 	public static void put(CustomTreeNode node) {
 		structureCache.put(node.getId(), node);
 	}
+	
+	public static void remove(CustomTreeNode node){
+		structureCache.remove(node.getId());
+	}
 
 	public static CustomTreeNode getNode(String id) {
 		return structureCache.get(id);
@@ -61,5 +65,18 @@ public class StructureCacheManager {
 	
 	public static int getNodeCount(){
 		return structureCache.values().size();
+	}
+	
+	public static int getHighestId(){
+		Iterator<String> it = structureCache.keySet().iterator();
+		int max = 0;
+		while (it.hasNext()){
+			int curr = Integer.parseInt(it.next());
+			if (curr > max){
+				max = curr;
+			}
+		}
+		return max;
+		
 	}
 }

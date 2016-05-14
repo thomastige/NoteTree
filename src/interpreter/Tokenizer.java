@@ -15,19 +15,23 @@ class Tokenizer {
 	}
 
 	public Token tokenize() {
-		text.charAt(counter);
-		StringBuffer buffer = new StringBuffer();
-		if (text.charAt(counter) == TAG_START) {
-			while (counter < text.length() && text.charAt(counter) != TAG_END) {
+		Token result = null;
+		if (!"".equals(text)) {
+			text.charAt(counter);
+			StringBuffer buffer = new StringBuffer();
+			if (text.charAt(counter) == TAG_START) {
+				while (counter < text.length() && text.charAt(counter) != TAG_END) {
+					buffer.append(text.charAt(counter++));
+				}
 				buffer.append(text.charAt(counter++));
+			} else {
+				while (counter < text.length() && text.charAt(counter) != TAG_START) {
+					buffer.append(text.charAt(counter++));
+				}
 			}
-			buffer.append(text.charAt(counter++));
-		} else {
-			while (counter < text.length() && text.charAt(counter) != TAG_START) {
-				buffer.append(text.charAt(counter++));
-			}
+			result = new Token(buffer.toString(), counter == text.length());
 		}
-		return new Token(buffer.toString(), counter == text.length());
+		return result;
 	}
 
 }

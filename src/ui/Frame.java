@@ -14,7 +14,6 @@ import java.io.IOException;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -42,7 +41,7 @@ public class Frame extends JFrame {
 	}
 
 	private void genericSetUp() throws ParserConfigurationException, SAXException, IOException {
-//		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		addWindowListener(new java.awt.event.WindowAdapter() {
 		    @Override
 		    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
@@ -77,6 +76,7 @@ public class Frame extends JFrame {
 		this.setSize(GlobalPropertiesHelper.getInitialX(), GlobalPropertiesHelper.getInitialY());
 	}
 
+	//TODO: make this good
 	public void reload() throws ParserConfigurationException, SAXException, IOException{
 		this.setContentPane(new Container());
 		String location = SessionCacheManager.getCacheFolderLocation();

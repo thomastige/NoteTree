@@ -1,8 +1,13 @@
 package objects;
 
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.io.IOException;
+
 import javax.swing.tree.DefaultMutableTreeNode;
 
-public class CustomTreeNode extends DefaultMutableTreeNode{
+public class CustomTreeNode extends DefaultMutableTreeNode implements Transferable{
 
 	/**
 	 * 
@@ -96,6 +101,24 @@ public class CustomTreeNode extends DefaultMutableTreeNode{
 	
 	public boolean isTextNode(){
 		return "textFile".equals(nodeType);
+	}
+
+	@Override
+	public DataFlavor[] getTransferDataFlavors() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isDataFlavorSupported(DataFlavor paramDataFlavor) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Object getTransferData(DataFlavor paramDataFlavor) throws UnsupportedFlavorException, IOException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

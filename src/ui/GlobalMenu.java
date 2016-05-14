@@ -290,11 +290,12 @@ public class GlobalMenu extends JMenuBar {
 		JMenu nodeMenu = new JMenu(LocalizationHelper.getLocalizedString("NODE_MENU"));
 		nodeMenu.add(addNewTextNodeButton());
 		nodeMenu.add(addNewFolderNodeButton());
-		nodeMenu.add(getEditNodeButton());
+		nodeMenu.add(addEditNodeButton());
+		nodeMenu.add(addDeleteNodeButton());
 		return nodeMenu;
 	}
 	
-	private JMenuItem getEditNodeButton(){
+	private JMenuItem addEditNodeButton(){
 		JMenuItem editNodeMenuItem = new JMenuItem(LocalizationHelper.getLocalizedString("EDIT_NODE"));
 		
 		editNodeMenuItem.addActionListener(new ActionListener() {
@@ -329,7 +330,8 @@ public class GlobalMenu extends JMenuBar {
 				if (selectedNode != null && selectedNode.isFolderNode()){
 					parent = selectedNode.getId();
 				}
-				CustomTreeNode node = new CustomTreeNode(""+((int)StructureCacheManager.getNodeCount()+1), parent, "New Node", "", "", "textFile");
+				String name = JOptionPane.showInputDialog(LocalizationHelper.getLocalizedString("SET_NODE_MESSAGE"));
+				CustomTreeNode node = new CustomTreeNode(""+((int)StructureCacheManager.getHighestId()+1), parent, name, "", "", "textFile");
 				StructureCacheManager.put(node);
 				try {
 					NavigationHelper.getRootFrame().reload();
@@ -354,7 +356,8 @@ public class GlobalMenu extends JMenuBar {
 				if (selectedNode != null && selectedNode.isFolderNode()){
 					parent = selectedNode.getId();
 				}
-				CustomTreeNode node = new CustomTreeNode(""+((int)StructureCacheManager.getNodeCount()+1), parent, "New Node", "", "", "folder");
+				String name = JOptionPane.showInputDialog(LocalizationHelper.getLocalizedString("SET_NODE_MESSAGE"));
+				CustomTreeNode node = new CustomTreeNode(""+((int)StructureCacheManager.getHighestId()+1), parent, name, "", "", "folder");
 				StructureCacheManager.put(node);
 				try {
 					NavigationHelper.getRootFrame().reload();
@@ -365,6 +368,28 @@ public class GlobalMenu extends JMenuBar {
 		});
 		
 		return addNewFolderNodeMenuItem;
+	}
+	
+	private JMenuItem addDeleteNodeButton(){
+		JMenuItem deleteNodeMenuItem = new JMenuItem(LocalizationHelper.getLocalizedString("DELETE_NOTE"));
+		deleteNodeMenuItem.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent paramActionEvent) {
+				CustomTreeNode selectedNode = NavigationHelper.getStructurePanel().getSelectedNode();
+				selectedNode.removeFromParent();
+				StructureCacheManager.remove(selectedNode);
+				try {
+					FileHelper.deleteNodeFromCache(selectedNode);
+					NavigationHelper.getRootFrame().reload();
+				} catch (ParserConfigurationException | SAXException | IOException e) {
+					e.printStackTrace();
+				}
+			}
+			
+		});
+		
+		return deleteNodeMenuItem;
 	}
 	
 }

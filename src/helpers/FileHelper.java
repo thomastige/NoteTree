@@ -35,6 +35,10 @@ public class FileHelper {
 		String result = "";
 		try {
 			StringBuilder sb = new StringBuilder();
+			File file = new File(path);
+			if (!file.exists()){
+				file.createNewFile();
+			}
 			List<String> list = Files.readAllLines(Paths.get(path));
 			Iterator<String> it = list.iterator();
 			while (it.hasNext()) {
@@ -164,5 +168,11 @@ public class FileHelper {
 		}
 		return result;
 
+	}
+	
+	public static void deleteNodeFromCache(CustomTreeNode node) throws FileNotFoundException{
+		String loc = getNodePath(node);
+		new File(loc).delete();
+		saveStructure();
 	}
 }
