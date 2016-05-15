@@ -1,6 +1,6 @@
 package ui;
 
-import helpers.NavigationHelper;
+import helpers.UIHelper;
 import helpers.property.GlobalPropertiesHelper;
 import helpers.property.SessionRestoreHelper;
 import hotkeys.MainActionMap;
@@ -94,13 +94,14 @@ public class Frame extends JFrame {
 			gui.setActionMap(new MainActionMap());
 			this.setContentPane(gui);
 		}
+		UIHelper.toggleGenerateButton();
 		revalidate();
 		repaint();
 	}
 	
 	public void setNewTextArea(TextPanel textPanel) {
 		((JSplitPane) getContentPane()).setRightComponent(textPanel);
-		NavigationHelper.getSplitPane().setDividerLocation(GlobalPropertiesHelper.getInitialDividerLocation());
+		UIHelper.getSplitPane().setDividerLocation(GlobalPropertiesHelper.getInitialDividerLocation());
 
 	}
 

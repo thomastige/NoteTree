@@ -46,9 +46,6 @@ public class StructureCacheManager {
 		while (it.hasNext()) {
 			put(it.next());
 		}
-		System.out.println(list);
-		System.out.println(structureCache.values());
-
 	}
 
 //	private static List<CustomTreeNode> getNodeList(List<CustomTreeNode> list, CustomTreeNode curTop) {

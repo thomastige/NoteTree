@@ -2,7 +2,6 @@ package helpers;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InvalidObjectException;
@@ -36,8 +35,6 @@ public class ZipHelper {
 
 				String fileName = ze.getName();
 				File newFile = new File(outputFolder + File.separator + fileName);
-
-				System.out.println("file unzip : " + newFile.getAbsoluteFile());
 
 				// create all non exists folders
 				// else you will hit FileNotFoundException for compressed folder
@@ -87,7 +84,6 @@ public class ZipHelper {
 				File dir = new File(source);
 				File[] files = dir.listFiles();
 				for (int i = 0; i < files.length; i++) {
-					System.out.println("Adding file: " + files[i].getName());
 					FileInputStream fis = new FileInputStream(files[i]);
 					// begin writing a new ZIP entry, positions the stream to
 					// the start of the entry data

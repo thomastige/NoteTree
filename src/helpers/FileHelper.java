@@ -8,17 +8,15 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-import javax.swing.JTree;
 import javax.swing.tree.TreePath;
 
+import objects.CustomTreeNode;
 import cache.SessionCacheManager;
 import cache.StructureCacheManager;
-import objects.CustomTreeNode;
 
 public class FileHelper {
 
@@ -56,13 +54,13 @@ public class FileHelper {
 	}
 
 	public static void saveToZip(String zipLocation) {
-		TreePath[] treePaths = NavigationHelper.getTreeObject().getSelectionPaths();
+		TreePath[] treePaths = UIHelper.getTreeObject().getSelectionPaths();
 		if (treePaths != null) {
 			for (int i = 0; i < treePaths.length; ++i) {
 				TreePath treePath = treePaths[i];
 				CustomTreeNode node = (CustomTreeNode) treePath.getLastPathComponent();
 				try {
-					FileHelper.saveTextFile(node.getId(), (NavigationHelper.getTextArea().getText()));
+					FileHelper.saveTextFile(node.getId(), (UIHelper.getTextArea().getText()));
 				} catch (FileNotFoundException e1) {
 					e1.printStackTrace();
 				}

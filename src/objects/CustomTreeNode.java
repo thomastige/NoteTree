@@ -12,6 +12,11 @@ public class CustomTreeNode extends DefaultMutableTreeNode implements Transferab
 	/**
 	 * 
 	 */
+	
+	public static final String TEXT_NODE = "textFile";
+	public static final String FOLDER_NODE = "folder";
+	
+	
 	private static final long serialVersionUID = 1L;
 	private String id;
 	private String parentId;

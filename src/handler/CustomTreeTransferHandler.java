@@ -1,7 +1,7 @@
 package handler;
 
 import helpers.FileHelper;
-import helpers.NavigationHelper;
+import helpers.UIHelper;
 
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
@@ -106,7 +106,7 @@ public class CustomTreeTransferHandler extends TransferHandler {
 		if (canImport(component, t.getTransferDataFlavors())) {
 			try {
 				result = importEntity((JTree) component, importedNode);
-				NavigationHelper.getRootFrame().reload();
+				UIHelper.getRootFrame().reload();
 			} catch (IOException ioe) {
 				System.err.println(ioe);
 			} catch (ParserConfigurationException e) {
@@ -152,9 +152,9 @@ public class CustomTreeTransferHandler extends TransferHandler {
 		if (lastPath != null) {
 			destination = (CustomTreeNode) lastPath.getLastPathComponent();
 		} else {
-			destination = (CustomTreeNode) NavigationHelper.getTreeObject().getModel().getRoot();
+			destination = (CustomTreeNode) UIHelper.getTreeObject().getModel().getRoot();
 		}
-		if (destination instanceof CustomTreeNode) {
+		if (destination instanceof CustomTreeNode && destination.isFolderNode()) {
 			CustomTreeNode targetNode = (CustomTreeNode) destination;
 			((CustomTreeNode) importedNode).setParentId(((CustomTreeNode) targetNode).getId());
 			try {

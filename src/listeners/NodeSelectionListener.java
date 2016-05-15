@@ -1,7 +1,7 @@
 package listeners;
 
 import helpers.FileHelper;
-import helpers.NavigationHelper;
+import helpers.UIHelper;
 import helpers.property.GlobalPropertiesHelper;
 import interpreter.Generator;
 
@@ -27,9 +27,9 @@ public class NodeSelectionListener implements TreeSelectionListener {
 			CustomTreeNode node = (CustomTreeNode) selectionPath.getLastPathComponent();
 			if (node.isTextNode()) {
 				String path = SessionCacheManager.getCacheFolderLocation() + File.separator + node.getId() + ".txt";
-				CustomTreeNode previous = NavigationHelper.getTextArea().getNodeOnDisplay();
+				CustomTreeNode previous = UIHelper.getTextArea().getNodeOnDisplay();
 				if (previous != null) {
-					TextFileCacheManager.put(previous.getId(), NavigationHelper.getTextArea().getText());
+					TextFileCacheManager.put(previous.getId(), UIHelper.getTextArea().getText());
 				}
 				String fileContent = TextFileCacheManager.getValue(node.getId());
 				if (fileContent == null) {
@@ -38,14 +38,15 @@ public class NodeSelectionListener implements TreeSelectionListener {
 				if (GlobalPropertiesHelper.getgenerateOnFileLoad()) {
 					Generator generator = new Generator(fileContent);
 					try {
-						NavigationHelper.getRootFrame().setNewTextArea(generator.generate());
+						UIHelper.getRootFrame().setNewTextArea(generator.generate());
 					} catch (BadLocationException e) {
 						e.printStackTrace();
 					}
 				} else {
-					NavigationHelper.getRootFrame().setNewTextArea(new TextPanel(fileContent));
+					UIHelper.getRootFrame().setNewTextArea(new TextPanel(fileContent));
 				}
-				NavigationHelper.getTextArea().setNodeOnDisplay(node);
+				UIHelper.getTextArea().setNodeOnDisplay(node);
+				UIHelper.toggleGenerateButton();
 			}
 		}
 	}

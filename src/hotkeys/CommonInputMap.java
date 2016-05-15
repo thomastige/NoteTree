@@ -1,22 +1,22 @@
 package hotkeys;
 
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
+import actions.ActionStringConstants;
 
-import javax.swing.InputMap;
-import javax.swing.KeyStroke;
 
-class CommonInputMap extends InputMap{
+
+
+class CommonInputMap extends AbstractInputMap{
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -2446406716850360259L;
 
 	public CommonInputMap() {
-		KeyStroke keyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_SPACE, InputEvent.CTRL_DOWN_MASK);
-		put(keyStroke, "doNothing");
+		putActionMapping(ActionStringConstants.GLOBAL_EDIT_GENERATE);
 	}
+	
+	
 		
 	
 }

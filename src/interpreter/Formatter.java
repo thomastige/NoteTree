@@ -1,6 +1,6 @@
 package interpreter;
 
-import helpers.NavigationHelper;
+import helpers.UIHelper;
 import helpers.property.FormatterTagsPropertiesHelper;
 
 import javax.swing.text.BadLocationException;
@@ -21,7 +21,7 @@ public class Formatter {
 	private SimpleAttributeSet attributeSet;
 
 	public Formatter() {
-		output = new TextPanel("", NavigationHelper.getTextArea().getNodeOnDisplay(), false);
+		output = new TextPanel("", UIHelper.getTextArea().getNodeOnDisplay(), false);
 		doc = output.getStyledDocument();
 		attributeSet = new SimpleAttributeSet();
 	}

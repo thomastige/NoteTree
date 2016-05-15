@@ -8,7 +8,6 @@ import java.awt.Component;
 import javax.management.InvalidAttributeValueException;
 import javax.swing.JTree;
 import javax.swing.UIManager;
-import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 
 import objects.CustomTreeNode;

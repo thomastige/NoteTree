@@ -7,15 +7,9 @@ public class HotkeyPropertiesHelper extends AbstractPropertiesHelper{
 	public static void readAllProperties() throws Exception {
 		readAllProperties(PROPERTIES_FILE_NAME);
 	}
-	
-	public static String getEditKey(){
-		return propertyCache.get("edit");
-	}
-	
-	public static String getGenerateKey(){
-		return propertyCache.get("generate");
-	}
-	
-	
 
+	public static String getHotkey(String key){
+		return propertyCache.get(key);
+	}
+	
 }

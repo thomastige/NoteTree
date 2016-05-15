@@ -13,11 +13,9 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.swing.DropMode;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
-import javax.swing.TransferHandler;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeSelectionModel;
 import javax.swing.tree.TreePath;
@@ -120,7 +118,6 @@ public class TreePanel extends JScrollPane {
 	}
 
 	public CustomTreeNode getSelectedNode() {
-		String path = "";
 		JTree jtree = getTree();
 		TreePath treePath = jtree.getSelectionPath();
 		CustomTreeNode node = null;

@@ -56,4 +56,12 @@
 		<EN>Rename Node</EN>
 		<FR>Renommer Noeud</FR>
 	</String>
+	<String id="SET_NODE_MESSAGE">
+		<EN>Please enter a name for the new Text Node</EN>
+		<FR>Veuillez entrer un nom pour le noeud textuel</FR>
+	</String>
+	<String id="SET_FOLDER_NODE_MESSAGE">
+		<EN>Please enter a name for the new Folder Node</EN>
+		<FR>Veuillez entrer un nom pour le noeud dossier</FR>
+	</String>
 </Strings>

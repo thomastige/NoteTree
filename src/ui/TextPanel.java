@@ -10,7 +10,6 @@ public class TextPanel extends JTextPane {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private boolean editMode = true;
 	private CustomTreeNode nodeOnDisplay;
 	
 	
@@ -18,7 +17,7 @@ public class TextPanel extends JTextPane {
 		super();
 		this.setVisible(true);
 		this.setText(text);
-		this.editMode = editMode;
+		this.setEditable(editMode);
 		this.nodeOnDisplay = node;
 		
 		setEditable(editMode);
@@ -26,16 +25,13 @@ public class TextPanel extends JTextPane {
 
 	public TextPanel() {
 		this("");
+		setEditable(false);
 	}
 
 	public TextPanel(String content) {
 		this(content, null, true);
 	}
 
-	public boolean getEditMode() {
-		return editMode;
-	}
-	
 	public CustomTreeNode getNodeOnDisplay(){
 		return nodeOnDisplay;
 	}
