@@ -11,7 +11,7 @@ import objects.CustomTreeNode;
 import ui.TextPanel;
 import cache.TextFileCacheManager;
 
-public class EditAction extends AbstractAction{
+public class EditAction extends AbstractAction {
 
 	/**
 	 * 
@@ -21,12 +21,15 @@ public class EditAction extends AbstractAction{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		CustomTreeNode node = UIHelper.getStructurePanel().getSelectedNode();
-		String text = TextFileCacheManager.getValue(node.getId());
-		if (text == null) {
-			String path = FileHelper.getNodePath(node);
-			text = FileHelper.getFileContentAsString(path);
+		String id = node.getId();
+		if (id != null) {
+			String text = TextFileCacheManager.getValue(id);
+			if (text == null) {
+				String path = FileHelper.getNodePath(node);
+				text = FileHelper.getFileContentAsString(path);
+			}
+			UIHelper.getRootFrame().setNewTextArea(new TextPanel(text, node, true));
 		}
-		UIHelper.getRootFrame().setNewTextArea(new TextPanel(text, node, true));
 		UIHelper.toggleGenerateButton();
 	}
 

@@ -1,7 +1,6 @@
 package cache;
 
 import helpers.FileHelper;
-import helpers.property.GlobalPropertiesHelper;
 
 import java.io.File;
 import java.io.FileNotFoundException;

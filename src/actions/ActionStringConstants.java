@@ -17,6 +17,7 @@ public class ActionStringConstants {
 	 * Tree exclusive actions
 	 */
 	public static final String TREE_DELETE_NOTE = "TreeDeleteNode";
+	public static final String TREE_RENAME_NODE = "TreeRenameNode";
 	
 	/**
 	 * Text area exclusive actions

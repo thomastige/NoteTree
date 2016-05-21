@@ -1,2 +1,9 @@
-generate=f5
-edit=f2
+EditGenerate=F2
+TreeDeleteNode=DELETE
+TreeRenameNode=control R
+NewTextNode=control N
+NewFolderNode=control shift N
+SaveProject=control S
+SaveAsProject=control shift S
+LoadProject=control O
+NewProject=control alt shift N

@@ -34,7 +34,7 @@ public class FileHelper {
 		try {
 			StringBuilder sb = new StringBuilder();
 			File file = new File(path);
-			if (!file.exists()){
+			if (!file.exists()) {
 				file.createNewFile();
 			}
 			List<String> list = Files.readAllLines(Paths.get(path));
@@ -167,10 +167,15 @@ public class FileHelper {
 		return result;
 
 	}
-	
-	public static void deleteNodeFromCache(CustomTreeNode node) throws FileNotFoundException{
+
+	public static void deleteNodeFromCache(CustomTreeNode node) throws FileNotFoundException {
 		String loc = getNodePath(node);
 		new File(loc).delete();
 		saveStructure();
 	}
+
+	public static String getPropertyFilesLocation() {
+		return getRootDirectory() + File.separator + "properties" + File.separator;
+	}
+
 }

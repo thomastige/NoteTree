@@ -16,7 +16,4 @@ public class SessionRestoreHelper extends AbstractPropertiesHelper{
 		SessionCacheManager.dumpSessionCache(PROPERTIES_FILE_NAME);
 	}
 	
-	private static void restoreSession(){
-		
-	}
 }

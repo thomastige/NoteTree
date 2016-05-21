@@ -17,20 +17,22 @@ import org.xml.sax.SAXException;
 
 import cache.StructureCacheManager;
 
-public class EditNodeButtonListener implements ActionListener{
-	
+public class EditNodeButtonListener implements ActionListener {
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String newValue= JOptionPane.showInputDialog(LocalizationHelper.getLocalizedString("EDIT_NODE_MESSAGE"));
-		TreePath path = UIHelper.getTreeObject().getSelectionPath();
-		try {
-			CustomTreeNode node =((CustomTreeNode)path.getLastPathComponent()); 
-			node.setTag(newValue);
-			StructureCacheManager.put(node);
-			UIHelper.getRootFrame().reload();
-		} catch (ParserConfigurationException | SAXException | IOException e1) {
-			e1.printStackTrace();
+		String newValue = JOptionPane.showInputDialog(LocalizationHelper.getLocalizedString("EDIT_NODE_MESSAGE"));
+		if (newValue != null) {
+			TreePath path = UIHelper.getTreeObject().getSelectionPath();
+			try {
+				CustomTreeNode node = ((CustomTreeNode) path.getLastPathComponent());
+				node.setTag(newValue);
+				StructureCacheManager.put(node);
+				UIHelper.getRootFrame().reload();
+			} catch (ParserConfigurationException | SAXException | IOException e1) {
+				e1.printStackTrace();
+			}
 		}
 	}
-	
+
 }

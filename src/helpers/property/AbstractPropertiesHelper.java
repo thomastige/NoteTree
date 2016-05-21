@@ -2,7 +2,6 @@ package helpers.property;
 
 import helpers.FileHelper;
 
-import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -11,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 abstract class AbstractPropertiesHelper {
-	protected static String PROPERTIES_FILE_LOCATION = FileHelper.getRootDirectory() + File.separator + "properties" + File.separator;
+	protected static String PROPERTIES_FILE_LOCATION = FileHelper.getPropertyFilesLocation();
 	protected static Map<String, String> propertyCache = new HashMap<String, String>();
 	protected static final String PROPERTY_SEPARATOR = "=";
 	protected static final String PROPERTY_COMMENT = "--";

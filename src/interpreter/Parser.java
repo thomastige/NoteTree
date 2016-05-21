@@ -42,8 +42,4 @@ class Parser {
 		return formatter.getOutput();
 	}
 
-	private boolean isDelimiter() {
-		return false;
-	}
-
 }

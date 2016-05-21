@@ -8,7 +8,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
-import actions.ActionStringConstants;
 import listeners.menubuttons.CloseButtonListener;
 import listeners.menubuttons.DeleteNodeButtonActionListener;
 import listeners.menubuttons.EditButtonActionListener;
@@ -22,6 +21,7 @@ import listeners.menubuttons.SaveAsButtonListener;
 import listeners.menubuttons.SaveButtonListener;
 import listeners.menubuttons.SaveStructureButtonListener;
 import listeners.menubuttons.SaveToCacheButtonListener;
+import actions.ActionStringConstants;
 
 public class GlobalMenu extends JMenuBar {
 
@@ -47,22 +47,22 @@ public class GlobalMenu extends JMenuBar {
 		JMenu fileMenu = new JMenu(FILE);
 		fileMenu.add(getNewButton());
 		fileMenu.add(getSaveButton());
-//		fileMenu.add(getSaveToCacheButton());
-//		fileMenu.add(getSaveStructureButton());
+		// fileMenu.add(getSaveToCacheButton());
+		// fileMenu.add(getSaveStructureButton());
 		fileMenu.add(getSaveAsButton());
 		fileMenu.add(getLoadButton());
 		fileMenu.add(getCloseButton());
 		return fileMenu;
 	}
-	
+
 	private JMenu getProcessSubMenu() {
 		JMenu processMenu = new JMenu(LocalizationHelper.getLocalizedString("SUBMENU_PROCESS"));
 		processMenu.add(getGenerateButton());
 		processMenu.add(getEditButton());
 		return processMenu;
 	}
-	
-	private JMenu getNodeSubMenu(){
+
+	private JMenu getNodeSubMenu() {
 		JMenu nodeMenu = new JMenu(LocalizationHelper.getLocalizedString("NODE_MENU"));
 		nodeMenu.add(addNewTextNodeButton());
 		nodeMenu.add(addNewFolderNodeButton());
@@ -70,7 +70,6 @@ public class GlobalMenu extends JMenuBar {
 		nodeMenu.add(addDeleteNodeButton());
 		return nodeMenu;
 	}
-
 
 	private JMenuItem getNewButton() {
 		JMenuItem newMenuItem = new JMenuItem(NEW);
@@ -100,6 +99,7 @@ public class GlobalMenu extends JMenuBar {
 		return saveMenuItem;
 	}
 
+	@SuppressWarnings("unused")
 	private JMenuItem getSaveToCacheButton() {
 		JMenuItem saveToCacheMenuItem = new JMenuItem(SAVE_TO_CACHE);
 		saveToCacheMenuItem.addActionListener(new SaveToCacheButtonListener());
@@ -113,6 +113,7 @@ public class GlobalMenu extends JMenuBar {
 		return saveAsMenuItem;
 	}
 
+	@SuppressWarnings("unused")
 	private JMenuItem getSaveStructureButton() {
 		JMenuItem saveStructureMenuItem = new JMenuItem(LocalizationHelper.getLocalizedString("SAVE_STRUCTURE"));
 		saveStructureMenuItem.addActionListener(new SaveStructureButtonListener());
@@ -135,32 +136,33 @@ public class GlobalMenu extends JMenuBar {
 		return editMenuItem;
 
 	}
-	
-	private JMenuItem addEditNodeButton(){
+
+	private JMenuItem addEditNodeButton() {
 		JMenuItem editNodeMenuItem = new JMenuItem(LocalizationHelper.getLocalizedString("EDIT_NODE"));
+		editNodeMenuItem.setAccelerator(KeyStroke.getKeyStroke(HotkeyPropertiesHelper.getHotkey(ActionStringConstants.TREE_RENAME_NODE)));
 		editNodeMenuItem.addActionListener(new EditNodeButtonListener());
 		return editNodeMenuItem;
 	}
 
-	private JMenuItem addNewTextNodeButton(){
+	private JMenuItem addNewTextNodeButton() {
 		JMenuItem addNewTextNodeMenuItem = new JMenuItem(LocalizationHelper.getLocalizedString("ADD_TEXT_NODE"));
 		addNewTextNodeMenuItem.setAccelerator(KeyStroke.getKeyStroke(HotkeyPropertiesHelper.getHotkey(ActionStringConstants.GLOBAL_NEW_TEXT_NODE)));
 		addNewTextNodeMenuItem.addActionListener(new NewTextNodeButtonListener());
 		return addNewTextNodeMenuItem;
 	}
-	
-	private JMenuItem addNewFolderNodeButton(){
+
+	private JMenuItem addNewFolderNodeButton() {
 		JMenuItem addNewFolderNodeMenuItem = new JMenuItem(LocalizationHelper.getLocalizedString("ADD_FOLDER_NODE"));
 		addNewFolderNodeMenuItem.setAccelerator(KeyStroke.getKeyStroke(HotkeyPropertiesHelper.getHotkey(ActionStringConstants.GLOBAL_NEW_FOLDER_NODE)));
 		addNewFolderNodeMenuItem.addActionListener(new NewFolderActionListener());
 		return addNewFolderNodeMenuItem;
 	}
-	
-	private JMenuItem addDeleteNodeButton(){
+
+	private JMenuItem addDeleteNodeButton() {
 		JMenuItem deleteNodeMenuItem = new JMenuItem(LocalizationHelper.getLocalizedString("DELETE_NOTE"));
 		deleteNodeMenuItem.setAccelerator(KeyStroke.getKeyStroke(HotkeyPropertiesHelper.getHotkey(ActionStringConstants.TREE_DELETE_NOTE)));
 		deleteNodeMenuItem.addActionListener(new DeleteNodeButtonActionListener());
 		return deleteNodeMenuItem;
 	}
-	
+
 }

@@ -17,4 +17,8 @@ public class FormatterTagsPropertiesHelper extends AbstractPropertiesHelper{
 		return propertyCache.get(propName);
 	}
 	
+	public static boolean hasParameters(String code){
+		return code.contains("=");
+	}
+	
 }
